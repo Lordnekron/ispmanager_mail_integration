@@ -1,9 +1,9 @@
-const axios = require("axios");
-let URL = `https://mail.kdlolymp.kz:1500/ispmgr?authinfo=root:0blivi0n22v8_123!&out=JSONdata`;
+const { instance, baseUrl } = require("./urls.js");
+
 let mails = [];
 
-axios
-  .get(`${URL}&func=email`)
+instance
+  .get(`${baseUrl}&func=email`)
   .then((responced) => {
     let responce = responced.data;
     responce.forEach((responce) => {
@@ -107,9 +107,9 @@ axios
       allMailings.defaultMails.mails.push();
       let password = Math.random().toString(36).slice(-11);
       if (key !== "defaultMails") {
-        axios
+        instance
           .get(
-            `${URL}&func=email.edit&sok=ok&name=${
+            `${baseUrl}&func=email.edit&sok=ok&name=${
               value.mailingName
             }&domainname=divera.kz&passwd=${password}&dontsave=on&maxsize=70&greylist=on&forward=${value.mails.join(
               " "
@@ -120,9 +120,9 @@ axios
             console.log(`Created ${value.mailingName}`);
             //console.log(responce);
             if (responce.error.code === "exists") {
-              axios
+              instance
                 .get(
-                  `${URL}&func=email.edit&sok=ok&elid=${
+                  `${baseUrl}&func=email.edit&sok=ok&elid=${
                     value.mailingName
                   }@divera.kz&forward=${value.mails.join(" ")}&dontsave=on`
                 )
