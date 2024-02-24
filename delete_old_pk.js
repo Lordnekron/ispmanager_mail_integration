@@ -10,7 +10,7 @@ async function takeAllMails() {
       redirect: "follow",
     };
     const response = await fetch(
-      `https://mail.kdlolymp.kz:1500/ispmgr?authinfo=root:0blivi0n22v8_123!&out=JSONdata&func=email`,
+     ,
       requestOptions
     );
 
@@ -30,7 +30,7 @@ async function deleteMails(mails) {
       redirect: "follow",
     };
     const response = await fetch(
-      `https://mail.kdlolymp.kz:1500/ispmgr?authinfo=root:0blivi0n22v8_123!&out=JSONdata&func=email.delete&elid=${mail}`,
+      ``,
       requestOptions
     );
     const data = await response.text();
